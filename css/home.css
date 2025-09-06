@@ -1,0 +1,50 @@
+/* Home Section */
+.hero {
+    background: linear-gradient(
+        rgba(45, 80, 22, 0.3), 
+        rgba(96, 108, 56, 0.3)
+    ), 
+    radial-gradient(circle at 30% 70%, var(--sage-green) 20%, transparent 50%),
+    radial-gradient(circle at 70% 30%, var(--moss-green) 15%, transparent 40%),
+    var(--cream);
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--deep-forest);
+    border-radius: 20px;
+    margin: 2rem 0;
+    box-shadow: 0 10px 30px var(--shadow);
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    font-weight: normal;
+    text-shadow: 2px 2px 8px rgba(255,255,255,0.5);
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.8;
+}
+
+.cta-button {
+    background: linear-gradient(135deg, var(--sage-green), var(--moss-green));
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px var(--shadow);
+    font-family: inherit;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px var(--shadow);
+}

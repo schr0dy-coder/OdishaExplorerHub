@@ -1,0 +1,49 @@
+/* Header & Navigation */
+header {
+    background: linear-gradient(135deg, var(--deep-forest), var(--forest-green));
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px var(--shadow);
+    backdrop-filter: blur(10px);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo {
+    color: var(--cream);
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-menu a {
+    color: var(--cream);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+}
+
+.nav-menu a:hover {
+    background: rgba(135, 169, 107, 0.2);
+    color: var(--light-sage);
+    transform: translateY(-2px);
+}

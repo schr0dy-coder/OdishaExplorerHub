@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Forest Theme Colors */
+    --forest-green: #2d5016;
+    --sage-green: #87a96b;
+    --moss-green: #606c38;
+    --earth-brown: #8b5a3c;
+    --cream: #fefae0;
+    --light-sage: #dda15e;
+    --deep-forest: #283618;
+    --soft-white: #f7f7f7;
+    --text-dark: #2d3436;
+    --text-light: #6c757d;
+    --shadow: rgba(45, 80, 22, 0.1);
+}
+
+body {
+    font-family: 'Georgia', serif;
+    line-height: 1.7;
+    color: var(--text-dark);
+    background: linear-gradient(135deg, var(--cream) 0%, var(--soft-white) 100%);
+    min-height: 100vh;
+}
+
+/* Main Content */
+main {
+    margin-top: 80px;
+}
+
+.section {
+    display: none;
+    min-height: calc(100vh - 80px);
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+.section-title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--forest-green);
+    text-shadow: 2px 2px 4px var(--shadow);
+    font-weight: normal;
+}
+
+/* Button Styles */
+.btn {
+    background: linear-gradient(135deg, var(--sage-green), var(--moss-green));
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px var(--shadow);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--shadow);
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.hidden {
+    display: none;
+}

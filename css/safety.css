@@ -1,0 +1,162 @@
+/* Safety Section */
+.weather-info {
+    background: linear-gradient(135deg, var(--sage-green), var(--moss-green));
+    color: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 30px var(--shadow);
+}
+
+.weather-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.weather-info input[type="text"] {
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: 2px solid var(--cream);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    width: 250px;
+    transition: all 0.3s ease;
+}
+
+.weather-info input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(254, 250, 224, 0.5);
+}
+
+#weather-display {
+    margin-top: 2rem;
+    color: var(--cream);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.weather-card-display {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid rgba(254, 250, 224, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.weather-main {
+    display: grid;
+    grid-template-areas: "icon temp" "city city" "desc desc";
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.weather-icon { grid-area: icon; font-size: 4.5rem; line-height: 1; }
+.weather-temp { grid-area: temp; font-size: 4rem; font-weight: bold; text-align: left; }
+.weather-city { grid-area: city; font-size: 1.8rem; font-weight: 500; }
+.weather-desc { grid-area: desc; font-size: 1.1rem; opacity: 0.9; }
+
+.weather-details {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid rgba(254, 250, 224, 0.3);
+    padding-top: 1.5rem;
+}
+
+.weather-detail-item { display: flex; align-items: center; gap: 1rem; }
+.detail-icon { font-size: 2rem; }
+.detail-value { font-size: 1.2rem; font-weight: bold; }
+.detail-label { font-size: 0.9rem; opacity: 0.8; }
+
+#weather-display p {
+    font-size: 1.1rem;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.safety-card h3 {
+    color: var(--forest-green);
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.emergency-list {
+    list-style: none;
+}
+
+.emergency-list li {
+    padding: 1.2rem;
+    border-bottom: 1px solid var(--sage-green);
+    display: flex;
+    justify-content: space-between;
+    background: var(--cream);
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.emergency-list li:hover {
+    background: var(--sage-green);
+    color: white;
+    transform: translateX(5px);
+}
+
+.emergency-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Checklist Styling */
+#checklist {
+    background: var(--cream);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid var(--sage-green);
+}
+
+#checklist label {
+    display: block;
+    padding: 0.8rem 0;
+    color: var(--text-dark);
+    cursor: pointer;
+    border-bottom: 1px solid rgba(135, 169, 107, 0.2);
+    transition: all 0.3s ease;
+}
+
+#checklist label:hover {
+    color: var(--forest-green);
+    background: rgba(135, 169, 107, 0.1);
+    padding-left: 1rem;
+    border-radius: 8px;
+}
+
+#checklist input[type="checkbox"] {
+    margin-right: 0.8rem;
+    transform: scale(1.2);
+    accent-color: var(--sage-green);
+}
+
+/* District selector */
+select {
+    padding: 1rem;
+    border: 2px solid var(--sage-green);
+    border-radius: 10px;
+    background: var(--cream);
+    color: var(--text-dark);
+    font-family: inherit;
+    font-size: 1rem;
+    width: 100%;
+    cursor: pointer;
+}
+
+#district-info {
+    background: var(--cream);
+    border: 1px solid var(--sage-green);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-top: 1rem;
+}

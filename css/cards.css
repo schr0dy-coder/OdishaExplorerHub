@@ -1,0 +1,57 @@
+/* Card Styles */
+.places-grid, .culture-grid, .safety-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.place-card, .art-card, .safety-card {
+    background: var(--soft-white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(135, 169, 107, 0.1);
+}
+
+.place-card:hover, .art-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px var(--shadow);
+}
+
+.place-card-img, .art-image {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(135deg, var(--sage-green), var(--moss-green));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.place-info, .art-info {
+    padding: 2rem;
+}
+
+.place-info h3, .art-info h3 {
+    color: var(--forest-green);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.place-info p, .art-info p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+/* Map Styling (related to tour cards) */
+#map {
+    height: 450px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow);
+    border: 3px solid var(--sage-green);
+}

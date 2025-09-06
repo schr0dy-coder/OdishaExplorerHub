@@ -1,0 +1,86 @@
+/* Learning Section */
+.learning-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.lesson-card, .quiz-container {
+    background: var(--soft-white);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px var(--shadow);
+    border: 1px solid rgba(135, 169, 107, 0.1);
+}
+
+.lesson-card h3, .quiz-container h3 {
+    color: var(--forest-green);
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+.progress-bar {
+    background: var(--cream);
+    height: 12px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 1.5rem 0;
+    border: 2px solid var(--sage-green);
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, var(--sage-green), var(--moss-green));
+    height: 100%;
+    transition: width 0.5s ease;
+    border-radius: 20px;
+}
+
+.flashcard {
+    background: var(--cream);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    margin: 1rem 0;
+    border: 2px solid var(--sage-green);
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flashcard h4 {
+    color: var(--forest-green);
+    font-size: 1.3rem;
+}
+
+.quiz-options {
+    display: grid;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.quiz-option {
+    padding: 1.2rem;
+    border: 2px solid var(--sage-green);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--cream);
+}
+
+.quiz-option:hover {
+    background: var(--sage-green);
+    color: white;
+    transform: translateX(5px);
+}
+
+.quiz-option.correct {
+    border-color: #27ae60;
+    background: #d5f4e6;
+}
+
+.quiz-option.incorrect {
+    border-color: #e74c3c;
+    background: #fdf2f2;
+}

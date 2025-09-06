@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odisha Explorer Hub - Discover Nature's Heritage</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Component-based CSS -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/learn.css">
+    <link rel="stylesheet" href="css/safety.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/modal.css">
+</head>
+
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <header>
+        <nav>
+            <a href="#" class="logo">🌿 Odisha Explorer</a>
+            <ul class="nav-menu">
+                <li><a href="#" data-section="home">Home</a></li>
+                <li><a href="#" data-section="tour">Tour Guide</a></li>
+                <li><a href="#" data-section="learn">Learn Odia</a></li>
+                <li><a href="#" data-section="culture">Culture</a></li>
+                <li><a href="#" data-section="safety">Safety Hub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Discover Serene Odisha</h1>
+                    <p>Experience the tranquil beauty of temples, nature, culture, and heritage</p>
+                    <button class="cta-button">Begin Your Journey</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tour Guide Section -->
+        <section id="tour" class="section">
+            <h2 class="section-title">Sacred Places & Natural Wonders</h2>
+
+            <div class="places-grid" id="places-grid">
+                <!-- Tourist location cards will be dynamically inserted here by JavaScript -->
+            </div>
+
+            <div id="map"></div>
+        </section>
+
+        <!-- Learn Odia Section -->
+        <section id="learn" class="section">
+            <h2 class="section-title">Learn Beautiful Odia</h2>
+
+            <div class="learning-container">
+                <div class="lesson-card">
+                    <h3>Today's Lesson: Warm Greetings</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress" style="width: 45%"></div>
+                    </div>
+                    <p><strong>Namaskar</strong> (ନମସ୍କାର) - Hello/Goodbye</p>
+                    <p><strong>Dhanyabad</strong> (ଧନ୍ୟବାଦ) - Thank you</p>
+                    <p><strong>Kemiti achanti?</strong> (କେମିତି ଅଛନ୍ତି?) - How are you?</p>
+                    <button class="btn" id="speak-btn">🔊 Listen</button>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>Word Cards</h3>
+                    <div id="flashcard" class="flashcard">
+                        <div class="flashcard-content">
+                            <h4 id="flashcard-text">Aamba (ଆମ)</h4>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn" id="flip-card-btn" style="margin-right: 1rem;">Flip Card</button>
+                        <button class="btn" id="next-card-btn">Next Word</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <h3>Quick Quiz</h3>
+                <div id="quiz-area">
+                    <!-- Quiz content will be loaded here by JavaScript -->
+                </div>
+                <div id="quiz-navigation" class="text-center mt-2" style="display: none;">
+                    <button class="btn">Next Question</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Culture Section -->
+        <section id="culture" class="section">
+            <h2 class="section-title">Rich Heritage & Arts</h2>
+
+            <div class="culture-grid" id="heritage-arts-grid">
+                <!-- Heritage & Arts cards will be dynamically inserted here -->
+            </div>
+
+            <h2 class="section-title" style="margin-top: 4rem;">A Culinary Journey</h2>
+            <div class="culture-grid" id="food-grid">
+                <!-- Famous Dishes cards will be dynamically inserted here -->
+            </div>
+
+        </section>
+
+        <!-- Safety Hub Section -->
+        <section id="safety" class="section">
+            <h2 class="section-title">Stay Safe & Prepared</h2>
+
+            <div class="weather-info">
+                <h3>Current Weather Conditions</h3>
+                <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; justify-content: center; align-items: center;">
+                    <input type="text" id="city-input" placeholder="Enter city name..." value="Bhubaneswar">
+                    <button class="btn" id="weather-btn">Get Weather</button>
+                </div>
+                <div id="weather-display">
+                    <p>Loading weather for Bhubaneswar...</p>
+                </div>
+            </div>
+
+            <div class="safety-grid">
+                <div class="safety-card">
+                    <h3>Emergency Contacts</h3>
+                    <ul class="emergency-list">
+                        <li><span>Police Emergency</span><span>100</span></li>
+                        <li><span>Fire Department</span><span>101</span></li>
+                        <li><span>Medical Emergency</span><span>108</span></li>
+                        <li><span>Disaster Response</span><span>1070</span></li>
+                        <li><span>Tourist Assistance</span><span>1363</span></li>
+                    </ul>
+                </div>
+
+                <div class="safety-card">
+                    <h3>Cyclone Preparedness Checklist</h3>
+                    <div id="checklist">
+                        <label><input type="checkbox"> Emergency supplies ready</label>
+                        <label><input type="checkbox"> Battery radio available</label>
+                        <label><input type="checkbox"> First aid kit prepared</label>
+                        <label><input type="checkbox"> Non-perishable food stored</label>
+                        <label><input type="checkbox"> Important documents secured</label>
+                        <label><input type="checkbox"> Evacuation route planned</label>
+                    </div>
+                    <button class="btn mt-2" id="save-checklist-btn">Save My Progress</button>
+                </div>
+
+                <div class="safety-card">
+                    <h3>District Emergency Information</h3>
+                    <select id="district-selector">
+                        <option value="">Choose Your District</option>
+                        <option value="khordha">Khordha</option>
+                        <option value="cuttack">Cuttack</option>
+                        <option value="puri">Puri</option>
+                        <option value="ganjam">Ganjam</option>
+                    </select>
+                    <div id="district-info" class="mt-2"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- Fireflies Animation Container -->
+    <div class="fireflies-container">
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+    </div>
+
+    <!-- Tour Details Modal -->
+    <div id="tour-modal-overlay" class="tour-modal-overlay">
+        <div id="tour-modal-content" class="tour-modal-content">
+            <span id="tour-modal-close" class="tour-modal-close">&times;</span>
+            <img id="tour-modal-image" src="" alt="Location Image" class="tour-modal-image">
+            <div class="tour-modal-body">
+                <h2 id="tour-modal-title"></h2>
+                <div class="tour-modal-details">
+                    <h3>History</h3>
+                    <p id="tour-modal-history"></p>
+                    <h3>Importance</h3>
+                    <p id="tour-modal-importance"></p>
+                    <h3>Nature</h3>
+                    <p id="tour-modal-nature"></p>
+                    <h3>Heritage</h3>
+                    <p id="tour-modal-heritage"></p>
+                </div>
+                <div class="tour-modal-footer">
+                    <a id="tour-modal-wiki-link" href="#" target="_blank" class="btn">Read More on Wikipedia</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="culture-data.js" defer></script>
+    <script src="tour.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+
+</html>

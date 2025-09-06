@@ -1,0 +1,91 @@
+/* Tour Modal Styles */
+.tour-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+    display: none; /* Hidden by default */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    align-items: center;
+    justify-content: center;
+}
+
+.tour-modal-overlay.visible {
+    display: flex;
+    opacity: 1;
+}
+
+.tour-modal-content {
+    background: var(--soft-white);
+    border-radius: 20px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.tour-modal-overlay.visible .tour-modal-content {
+    transform: scale(1);
+}
+
+.tour-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 10;
+}
+
+.tour-modal-close:hover {
+    color: var(--forest-green);
+}
+
+.tour-modal-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.tour-modal-body {
+    padding: 2rem 2.5rem;
+}
+
+.tour-modal-body h2 {
+    font-size: 2.2rem;
+    color: var(--forest-green);
+    margin-bottom: 1.5rem;
+}
+
+.tour-modal-details h3 {
+    font-size: 1.3rem;
+    color: var(--moss-green);
+    border-left: 4px solid var(--sage-green);
+    padding-left: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.tour-modal-details p {
+    color: var(--text-dark);
+    line-height: 1.8;
+}
+
+.tour-modal-footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--shadow);
+}
