@@ -72,6 +72,11 @@ var vocabulary = [
     { odia: 'Bhagini (ଭଗିନୀ)', english: 'Sister' }
 ];
 
+let displayedPlaces = 0;
+const placesPerLoad = 6;
+let allPlaces = [];
+let filteredPlaces = [];
+
 // =================================================================
 // 2. FUNCTION DEFINITIONS
 // =================================================================
@@ -104,17 +109,15 @@ function loadMap() {
     });
 }
     
-    function initTourGuide() {
+    function displayPlaces() {
         const placesGrid = document.getElementById('places-grid');
-        if (!placesGrid) return;
-    
-        placesGrid.innerHTML = ''; // Clear existing content
-    
-        touristLocations.forEach(location => {
+        const placesToRender = filteredPlaces.slice(displayedPlaces, displayedPlaces + placesPerLoad);
+
+        placesToRender.forEach(location => {
             const card = document.createElement('div');
             card.className = 'place-card';
             card.innerHTML = `
-                <div class="place-card-img" style="background-image: url('${location.image}'); background-size: cover; background-position: center;">
+                <div class="place-card-img" style="background-image: url('${location.images[0]}'); background-size: cover; background-position: center;">
                     <!-- Image is now a background -->
                 </div>
                 <div class="place-info">
@@ -125,25 +128,80 @@ function loadMap() {
             `;
             placesGrid.appendChild(card);
         });
+
+        displayedPlaces += placesToRender.length;
+        const viewMoreBtn = document.getElementById('view-more-btn');
+        if (displayedPlaces >= filteredPlaces.length) {
+            viewMoreBtn.style.display = 'none';
+        } else {
+            viewMoreBtn.style.display = 'block';
+        }
+    }
+
+    function filterPlaces() {
+        const searchBar = document.getElementById('search-bar');
+        const searchTerm = searchBar.value.toLowerCase();
+
+        filteredPlaces = allPlaces.filter(place => 
+            place.name.toLowerCase().includes(searchTerm) ||
+            place.short_desc.toLowerCase().includes(searchTerm)
+        );
+        displayedPlaces = 0;
+        document.getElementById('places-grid').innerHTML = ''; // Clear existing content
+        displayPlaces();
+    }
+
+    function initTourGuide() {
+        allPlaces = [...touristLocations]; // Initialize allPlaces with all locations
+        filterPlaces(); // Initial display with no filter
     }
     
     function openTourModal(locationId) {
         const location = touristLocations.find(loc => loc.id === locationId);
         if (!location) return;
     
-        document.getElementById('tour-modal-image').src = location.image;
+        document.getElementById('tour-modal-image').src = location.images[0];
         document.getElementById('tour-modal-title').textContent = location.name;
         document.getElementById('tour-modal-history').textContent = location.details.history;
         document.getElementById('tour-modal-importance').textContent = location.details.importance;
         document.getElementById('tour-modal-nature').textContent = location.details.nature;
         document.getElementById('tour-modal-heritage').textContent = location.details.heritage;
         document.getElementById('tour-modal-wiki-link').href = location.wiki_link;
+
+        const modalFooter = document.querySelector('.tour-modal-footer');
+        const existingButton = modalFooter.querySelector('.view-more-btn');
+        if (existingButton) {
+            existingButton.remove();
+        }
+
+        if (location.images && location.images.length > 1) {
+            const viewMoreBtn = document.createElement('button');
+            viewMoreBtn.textContent = 'View More Images';
+            viewMoreBtn.className = 'btn view-more-btn';
+            viewMoreBtn.addEventListener('click', () => openGalleryModal(location.images));
+            modalFooter.appendChild(viewMoreBtn);
+        }
     
         document.getElementById('tour-modal-overlay').classList.add('visible');
     }
     
     function closeTourModal() {
         document.getElementById('tour-modal-overlay').classList.remove('visible');
+    }
+
+    function openGalleryModal(images) {
+        const galleryImages = document.getElementById('gallery-modal-images');
+        galleryImages.innerHTML = '';
+        images.forEach(imageSrc => {
+            const img = document.createElement('img');
+            img.src = imageSrc;
+            galleryImages.appendChild(img);
+        });
+        document.getElementById('gallery-modal-overlay').classList.add('visible');
+    }
+
+    function closeGalleryModal() {
+        document.getElementById('gallery-modal-overlay').classList.remove('visible');
     }
     
 function initCultureSection() {
@@ -582,9 +640,22 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- Event Listeners Setup ---
 
     // Navigation
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburgerMenu.addEventListener('click', () => {
+        hamburgerMenu.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
     document.querySelector('a.logo').addEventListener('click', (e) => {
         e.preventDefault();
         showSection('home');
+        // Close menu if open on mobile
+        if (hamburgerMenu.classList.contains('active')) {
+            hamburgerMenu.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
     });
     document.querySelectorAll('.nav-menu a').forEach(link => {
         link.addEventListener('click', (e) => {
@@ -592,12 +663,21 @@ document.addEventListener('DOMContentLoaded', function () {
             const sectionName = e.target.dataset.section;
             if (sectionName) {
                 showSection(sectionName);
+                // Close menu after clicking a link on mobile
+                if (hamburgerMenu.classList.contains('active')) {
+                    hamburgerMenu.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
             }
         });
     });
 
     // Home CTA
     document.querySelector('.cta-button').addEventListener('click', () => showSection('tour'));
+
+    // Tour Guide Search and View More
+    document.getElementById('search-bar').addEventListener('input', filterPlaces);
+    document.getElementById('view-more-btn').addEventListener('click', displayPlaces);
 
     // Tour Guide Modal
     document.getElementById('places-grid').addEventListener('click', function(e) {
@@ -624,6 +704,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     document.getElementById('tour-modal-close').addEventListener('click', closeTourModal);
+
+    const galleryModalOverlay = document.getElementById('gallery-modal-overlay');
+    galleryModalOverlay.addEventListener('click', (e) => {
+        if (e.target === galleryModalOverlay) {
+            closeGalleryModal();
+        }
+    });
+    document.getElementById('gallery-modal-close').addEventListener('click', closeGalleryModal);
 
     // Learn Odia Section
     document.getElementById('speak-btn').addEventListener('click', () => speakWord('namaskar'));

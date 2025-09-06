@@ -55,3 +55,25 @@
     box-shadow: 0 10px 30px var(--shadow);
     border: 3px solid var(--sage-green);
 }
+
+.search-container {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+#search-bar {
+    width: 100%;
+    max-width: 500px;
+    padding: 0.8rem 1.2rem;
+    border: 2px solid var(--sage-green);
+    border-radius: 25px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+#search-bar:focus {
+    border-color: var(--forest-green);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}

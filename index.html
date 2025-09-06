@@ -30,7 +30,12 @@
     <header>
         <nav>
             <a href="#" class="logo">🌿 Odisha Explorer</a>
-            <ul class="nav-menu">
+            <div class="hamburger-menu" id="hamburger-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="#" data-section="home">Home</a></li>
                 <li><a href="#" data-section="tour">Tour Guide</a></li>
                 <li><a href="#" data-section="learn">Learn Odia</a></li>
@@ -58,8 +63,14 @@
         <section id="tour" class="section">
             <h2 class="section-title">Sacred Places & Natural Wonders</h2>
 
+            <div class="search-container">
+                <input type="text" id="search-bar" placeholder="Search for a place...">
+            </div>
             <div class="places-grid" id="places-grid">
                 <!-- Tourist location cards will be dynamically inserted here by JavaScript -->
+            </div>
+            <div class="text-center mt-2">
+                <button class="btn" id="view-more-btn">View More</button>
             </div>
 
             <div id="map"></div>
@@ -222,6 +233,13 @@
                     <a id="tour-modal-wiki-link" href="#" target="_blank" class="btn">Read More on Wikipedia</a>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div id="gallery-modal-overlay" class="tour-modal-overlay">
+        <div id="gallery-modal-content" class="tour-modal-content">
+            <span id="gallery-modal-close" class="tour-modal-close">&times;</span>
+            <div id="gallery-modal-images" class="gallery-grid"></div>
         </div>
     </div>
 
