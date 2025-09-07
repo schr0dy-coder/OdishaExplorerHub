@@ -72,6 +72,14 @@ var vocabulary = [
     { odia: 'Bhagini (ଭଗିନୀ)', english: 'Sister' }
 ];
 
+const popularDestinations = [
+    'Paris, France', 'Tokyo, Japan', 'New York, USA', 'London, England', 'Rome, Italy',
+    'Barcelona, Spain', 'Amsterdam, Netherlands', 'Prague, Czech Republic', 'Istanbul, Turkey', 'Bangkok, Thailand'
+];
+let chatEnabled = false;
+let videoEnabled = false;
+let audioEnabled = false;
+
 let displayedPlaces = 0;
 const placesPerLoad = 6;
 let allPlaces = [];
@@ -83,11 +91,26 @@ let filteredPlaces = [];
 
 // --- General Page Functions ---
 function showSection(sectionName) {
-    document.querySelectorAll('.section').forEach(section => {
+    // Hide all main sections
+    document.querySelectorAll('main > .section').forEach(section => {
         section.classList.remove('active');
     });
-    document.getElementById(sectionName).classList.add('active');
+    // Show the target section
+    const targetSection = document.getElementById(sectionName);
+    if (targetSection) {
+        targetSection.classList.add('active');
+    }
 
+    // Update active link in navigation
+    document.querySelectorAll('.nav-menu li').forEach(li => {
+        li.classList.remove('active');
+    });
+    const activeLink = document.querySelector(`.nav-menu a[data-section="${sectionName}"]`);
+    if (activeLink) {
+        activeLink.parentElement.classList.add('active');
+    }
+
+    // Special handling for sections that need initialization
     if (sectionName === 'tour' && map === null) {
         loadMap();
     }
@@ -404,7 +427,7 @@ async function updateWeather() {
                             <div class="detail-label">Humidity</div>
                         </div>
                     </div>
-                    <div class="weather-detail-item">
+                    <div class="detail-item">
                         <span class="detail-icon">💨</span>
                         <div>
                             <div class="detail-value">${windSpeed} km/h</div>
@@ -646,12 +669,12 @@ document.addEventListener('DOMContentLoaded', function () {
     hamburgerMenu.addEventListener('click', () => {
         hamburgerMenu.classList.toggle('active');
         navMenu.classList.toggle('active');
+        showSection(document.querySelector('.nav-menu li.active a').dataset.section);
     });
 
     document.querySelector('a.logo').addEventListener('click', (e) => {
         e.preventDefault();
         showSection('home');
-        // Close menu if open on mobile
         if (hamburgerMenu.classList.contains('active')) {
             hamburgerMenu.classList.remove('active');
             navMenu.classList.remove('active');
@@ -663,7 +686,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const sectionName = e.target.dataset.section;
             if (sectionName) {
                 showSection(sectionName);
-                // Close menu after clicking a link on mobile
                 if (hamburgerMenu.classList.contains('active')) {
                     hamburgerMenu.classList.remove('active');
                     navMenu.classList.remove('active');
@@ -672,8 +694,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Home CTA
-    document.querySelector('.cta-button').addEventListener('click', () => showSection('tour'));
+    // Home CTA (if it exists)
+    const ctaButton = document.querySelector('.cta-button');
+    if (ctaButton) ctaButton.addEventListener('click', () => showSection('tour'));
+
 
     // Tour Guide Search and View More
     document.getElementById('search-bar').addEventListener('input', filterPlaces);
@@ -738,10 +762,59 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('weather-btn').addEventListener('click', updateWeather);
     document.getElementById('save-checklist-btn').addEventListener('click', saveChecklist);
     document.getElementById('district-selector').addEventListener('change', (e) => showDistrictInfo(e.target.value));
+
+    // --- Home Page Listeners ---
+    const destinationInput = document.getElementById('destination-input');
+    const dateInput = document.getElementById('date-input');
+    const groupInput = document.getElementById('group-input');
+    const searchBtn = document.getElementById('search-btn');
+    const suggestionsDiv = document.getElementById('suggestions');
+
+    if (destinationInput) {
+        destinationInput.addEventListener('input', () => showSuggestions(destinationInput.value));
+        destinationInput.addEventListener('focus', () => showSuggestions(destinationInput.value));
+    }
+    if (dateInput) {
+        dateInput.addEventListener('focus', () => { dateInput.type = 'date'; });
+        dateInput.addEventListener('blur', () => { if (!dateInput.value) dateInput.type = 'text'; });
+    }
+    if (groupInput) {
+        groupInput.addEventListener('blur', () => validateGroupSize(groupInput));
+    }
+    if (searchBtn) {
+        searchBtn.addEventListener('click', performSearch);
+    }
+    if (suggestionsDiv) {
+        suggestionsDiv.addEventListener('click', (event) => {
+            if (event.target.classList.contains('suggestion-item')) {
+                selectDestination(event.target.dataset.destination);
+            }
+        });
+    }
+    document.addEventListener('click', function(event) {
+        if (suggestionsDiv && !event.target.closest('.search-container')) {
+            suggestionsDiv.style.display = 'none';
+        }
+    });
+
+    document.getElementById('chat-btn')?.addEventListener('click', toggleChat);
+    document.getElementById('video-btn')?.addEventListener('click', toggleVideo);
+    document.getElementById('audio-btn')?.addEventListener('click', toggleAudio);
+
+    // Keyboard support for search
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' && document.activeElement.closest('.search-container')) {
+            performSearch();
+        }
+        if (event.key === 'Escape' && suggestionsDiv) {
+            suggestionsDiv.style.display = 'none';
+        }
+    });
 });
 
 window.addEventListener('load', function () {
-    // Initialize app logic that should run after all resources (images, etc.) are loaded
+    const initialSection = window.location.hash.substring(1) || 'home';
+    showSection(initialSection);
     updateProgress(45);
     startQuiz();
     updateWeather();

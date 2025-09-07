@@ -16,6 +16,12 @@
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/modal.css">
+    <style>
+        /* Hide all sections that are not active */
+        main > section:not(.active) {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -36,11 +42,11 @@
                 <div class="bar"></div>
             </div>
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="#" data-section="home">Home</a></li>
-                <li><a href="#" data-section="tour">Tour Guide</a></li>
-                <li><a href="#" data-section="learn">Learn Odia</a></li>
-                <li><a href="#" data-section="culture">Culture</a></li>
-                <li><a href="#" data-section="safety">Safety Hub</a></li>
+                <li class="active"><a href="#home" data-section="home">Home</a></li>
+                <li><a href="#tour" data-section="tour">Tour Guide</a></li>
+                <li><a href="#learn" data-section="learn">Learn Odia</a></li>
+                <li><a href="#culture" data-section="culture">Culture</a></li>
+                <li><a href="#safety" data-section="safety">Safety Hub</a></li>
             </ul>
         </nav>
     </header>
@@ -48,13 +54,46 @@
 
 
     <main>
-        <!-- Home Section -->
         <section id="home" class="section active">
             <div class="hero">
                 <div class="hero-content">
-                    <h1>Discover Serene Odisha</h1>
-                    <p>Experience the tranquil beauty of temples, nature, culture, and heritage</p>
-                    <button class="cta-button">Begin Your Journey</button>
+                    <h1 class="floating">See the world like a local</h1>
+                    <p>Find a local guide consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+                    <div class="search-container" style="position: relative;">
+                        <input type="text" class="search-field" placeholder="Destination" id="destination-input">
+                        <div class="search-suggestions" id="suggestions"></div>
+                        <div class="search-divider"></div>
+                        <input type="text" class="date-field" placeholder="dd-mm-yyyy" id="date-input">
+                        <div class="search-divider"></div>
+                        <input type="text" class="search-field" placeholder="Group size" id="group-input">
+                        <button class="search-btn" id="search-btn">
+                            <span id="search-icon">🔍</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="features">
+                <div class="features-container">
+                    <div class="feature">
+                        <span class="feature-icon">👍</span>
+                        <h3>Hand Picked Guides</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🎧</span>
+                        <h3>24/7 Support</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <div class="feature-controls">
+                            <button class="control-btn" id="chat-btn">💬</button>
+                            <button class="control-btn" id="video-btn">🎥</button>
+                            <button class="control-btn" id="audio-btn">▶️</button>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">👤</span>
+                        <h3>Private Tours</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
                 </div>
             </div>
         </section>
