@@ -4,6 +4,10 @@
 
 Odisha Explorer Hub is a full-stack web application designed to help tourists and locals discover, learn about, and safely explore the rich natural and cultural heritage of Odisha, India.
 
+**Live Demo:**  
+[https://schr0dy-coder.github.io/OdishaExplorerHub/](https://schr0dy-coder.github.io/OdishaExplorerHub/)
+
+
 **Problem Statement**
 
 Tourists and new visitors to Odisha often face challenges such as:
