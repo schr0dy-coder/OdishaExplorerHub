@@ -54,45 +54,45 @@
 
 
     <main>
-        <section id="home" class="section active">
-            <div class="hero">
+        <section id="home" class="section home active">
+            <div class="hero-section">
+                <div class="hero-image-container">
+                    <img src="images/Temples/Sun Temple/Konarka_Temple.jpg" alt="Konark Sun Temple" class="hero-image">
+                    <div class="hero-overlay"></div>
+                </div>
                 <div class="hero-content">
-                    <h1 class="floating">See the world like a local</h1>
-                    <p>Find a local guide consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                    <div class="search-container" style="position: relative;">
-                        <input type="text" class="search-field" placeholder="Destination" id="destination-input">
-                        <div class="search-suggestions" id="suggestions"></div>
-                        <div class="search-divider"></div>
-                        <input type="text" class="date-field" placeholder="dd-mm-yyyy" id="date-input">
-                        <div class="search-divider"></div>
-                        <input type="text" class="search-field" placeholder="Group size" id="group-input">
-                        <button class="search-btn" id="search-btn">
-                            <span id="search-icon">🔍</span>
-                        </button>
+                    <h1 class="hero-title">Discover the Soul of Incredible India</h1>
+                    <p class="hero-subtitle">Welcome to Odisha, a land of ancient temples, serene beaches, and vibrant culture. Explore the unexplored beauty of this eastern gem.</p>
+                    <div class="hero-cta-buttons">
+                        <a href="#tour" class="btn btn-primary" data-section="tour">Explore Tours</a>
+                        <a href="#culture" class="btn" data-section="culture">Discover Culture</a>
                     </div>
                 </div>
             </div>
-            <div class="features">
-                <div class="features-container">
-                    <div class="feature">
-                        <span class="feature-icon">👍</span>
-                        <h3>Hand Picked Guides</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                    <div class="feature">
-                        <span class="feature-icon">🎧</span>
-                        <h3>24/7 Support</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <div class="feature-controls">
-                            <button class="control-btn" id="chat-btn">💬</button>
-                            <button class="control-btn" id="video-btn">🎥</button>
-                            <button class="control-btn" id="audio-btn">▶️</button>
+
+            <div class="featured-section">
+                <h2 class="section-title">Featured Destinations</h2>
+                <div class="featured-grid">
+                    <div class="featured-card">
+                        <img src="images/Beaches & Lakes/Puri Golden Beach/Header-2-2-1024x391.jpg" alt="Puri Beach">
+                        <div class="featured-card-content">
+                            <h3>Puri Golden Beach</h3>
+                            <p>Witness breathtaking sunrises and immerse yourself in the spiritual aura of this famous coastline.</p>
                         </div>
                     </div>
-                    <div class="feature">
-                        <span class="feature-icon">👤</span>
-                        <h3>Private Tours</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <div class="featured-card">
+                        <img src="images/Beaches & Lakes/Chilika Lake/Chilika_Bhubaneswar.me.jpg" alt="Chilika Lake">
+                        <div class="featured-card-content">
+                            <h3>Chilika Lake</h3>
+                            <p>Asia's largest brackish water lagoon, a paradise for bird watchers and nature lovers.</p>
+                        </div>
+                    </div>
+                    <div class="featured-card">
+                        <img src="images/Hill Stations & Waterfalls/Daringbadi-Kashmir of Odisha/daringbadi-kashmir-of-odisha-you-must-visit.jpg" alt="Daringbadi">
+                        <div class="featured-card-content">
+                            <h3>Daringbadi</h3>
+                            <p>Known as the "Kashmir of Odisha," this hill station offers a tranquil escape into nature.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -187,40 +187,101 @@
             </div>
 
             <div class="safety-grid">
-                <div class="safety-card">
+                <div class="safety-card emergency-contacts-card">
                     <h3>Emergency Contacts</h3>
-                    <ul class="emergency-list">
-                        <li><span>Police Emergency</span><span>100</span></li>
-                        <li><span>Fire Department</span><span>101</span></li>
-                        <li><span>Medical Emergency</span><span>108</span></li>
-                        <li><span>Disaster Response</span><span>1070</span></li>
-                        <li><span>Tourist Assistance</span><span>1363</span></li>
-                    </ul>
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <div class="contact-icon">🚓</div>
+                            <div class="contact-info">
+                                <span>Police</span>
+                                <strong>100</strong>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🔥</div>
+                            <div class="contact-info">
+                                <span>Fire</span>
+                                <strong>101</strong>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🚑</div>
+                            <div class="contact-info">
+                                <span>Ambulance</span>
+                                <strong>108</strong>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🌊</div>
+                            <div class="contact-info">
+                                <span>Disaster Mgmt</span>
+                                <strong>1070</strong>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🚶‍♂️</div>
+                            <div class="contact-info">
+                                <span>Tourist Help</span>
+                                <strong>1363</strong>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="safety-card">
                     <h3>Cyclone Preparedness Checklist</h3>
                     <div id="checklist">
-                        <label><input type="checkbox"> Emergency supplies ready</label>
-                        <label><input type="checkbox"> Battery radio available</label>
-                        <label><input type="checkbox"> First aid kit prepared</label>
-                        <label><input type="checkbox"> Non-perishable food stored</label>
-                        <label><input type="checkbox"> Important documents secured</label>
-                        <label><input type="checkbox"> Evacuation route planned</label>
+                        <label><input type="checkbox" data-task="Emergency supplies ready"> Emergency supplies ready</label>
+                        <label><input type="checkbox" data-task="Battery radio available"> Battery radio available</label>
+                        <label><input type="checkbox" data-task="First aid kit prepared"> First aid kit prepared</label>
+                        <label><input type="checkbox" data-task="Non-perishable food stored"> Non-perishable food stored</label>
+                        <label><input type="checkbox" data-task="Important documents secured"> Important documents secured</label>
+                        <label><input type="checkbox" data-task="Evacuation route planned"> Evacuation route planned</label>
                     </div>
-                    <button class="btn mt-2" id="save-checklist-btn">Save My Progress</button>
+                    <div class="checklist-footer">
+                        <button class="btn" id="save-checklist-btn">Save Progress</button>
+                        <span id="checklist-saved-status"></span>
+                    </div>
                 </div>
 
                 <div class="safety-card">
                     <h3>District Emergency Information</h3>
                     <select id="district-selector">
                         <option value="">Choose Your District</option>
-                        <option value="khordha">Khordha</option>
+                        <option value="angul">Angul</option>
+                        <option value="balangir">Balangir</option>
+                        <option value="balasore">Balasore</option>
+                        <option value="bargarh">Bargarh</option>
+                        <option value="bhadrak">Bhadrak</option>
+                        <option value="boudh">Boudh</option>
                         <option value="cuttack">Cuttack</option>
-                        <option value="puri">Puri</option>
+                        <option value="deogarh">Deogarh</option>
+                        <option value="dhenkanal">Dhenkanal</option>
+                        <option value="gajapati">Gajapati</option>
                         <option value="ganjam">Ganjam</option>
+                        <option value="jagatsinghpur">Jagatsinghpur</option>
+                        <option value="jajpur">Jajpur</option>
+                        <option value="jharsuguda">Jharsuguda</option>
+                        <option value="kalahandi">Kalahandi</option>
+                        <option value="kandhamal">Kandhamal</option>
+                        <option value="kendrapara">Kendrapara</option>
+                        <option value="keonjhar">Keonjhar</option>
+                        <option value="khordha">Khordha</option>
+                        <option value="koraput">Koraput</option>
+                        <option value="malkangiri">Malkangiri</option>
+                        <option value="mayurbhanj">Mayurbhanj</option>
+                        <option value="nabarangpur">Nabarangpur</option>
+                        <option value="nayagarh">Nayagarh</option>
+                        <option value="nuapada">Nuapada</option>
+                        <option value="puri">Puri</option>
+                        <option value="rayagada">Rayagada</option>
+                        <option value="sambalpur">Sambalpur</option>
+                        <option value="subarnapur">Subarnapur</option>
+                        <option value="sundargarh">Sundargarh</option>
                     </select>
-                    <div id="district-info" class="mt-2"></div>
+                    <div id="district-info" class="mt-2">
+                        <p>Select a district to see emergency contact information.</p>
+                    </div>
                 </div>
             </div>
         </section>

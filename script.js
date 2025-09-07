@@ -69,7 +69,37 @@ var vocabulary = [
     { odia: 'Pani (ପାଣି)', english: 'Water' },
     { odia: 'Ghara (ଘର)', english: 'House' },
     { odia: 'Bhai (ଭାଇ)', english: 'Brother' },
-    { odia: 'Bhagini (ଭଗିନୀ)', english: 'Sister' }
+    { odia: 'Bhagini (ଭଗିନୀ)', english: 'Sister' },
+    { odia: 'Namaskar (ନମସ୍କାର)', english: 'Hello' },
+    { odia: 'Kemiti achha? (କେମିତି ଅଛ?)', english: 'How are you?' },
+    { odia: 'Bhala achi, dhanyabada (ଭଲ ଅଛି, ଧନ୍ୟବାଦ)', english: 'Fine, thank you' },
+    { odia: 'Tumara naama kana? (ତୁମର ନାମ କଣ?)', english: 'What is your name?' },
+    { odia: 'Mora naama hochi ______ (ମୋର ନାମ ହେଉଛି ______)', english: 'My name is ______' },
+    { odia: 'Tuma sahita sakhyata kari bhala lagila (ତୁମ ସହିତ ସାକ୍ଷାତ କରି ଭଲ ଲାଗିଲା)', english: 'Nice to meet you' },
+    { odia: 'Dayakari (ଦୟାକରି)', english: 'Please' },
+    { odia: 'Dhanyawad (ଧନ୍ୟବାଦ)', english: 'Thank you' },
+    { odia: 'Su shwagatham (ସୁ ସ୍ୱାଗତମ୍)', english: 'You\'re welcome' },
+    { odia: 'Han (ହଁ)', english: 'Yes' },
+    { odia: 'Na (ନା)', english: 'No' },
+    { odia: 'Aangya (ଆଜ୍ଞା)', english: 'Excuse me (getting attention)' },
+    { odia: 'Khyama karibe (କ୍ଷମା କରିବେ)', english: 'Excuse me (begging pardon)' },
+    { odia: 'Mun duhkhita (ମୁଁ ଦୁଃଖିତ)', english: 'I\'m sorry' },
+    { odia: 'Bidaay namaskar (ବିଦାୟ ନମସ୍କାର)', english: 'Goodbye' },
+    { odia: 'Mu bujhiparilini (ମୁଁ ବୁଝିପାରିଲିନି)', english: 'I don\'t understand' },
+    { odia: 'Apana angreji kahanti ki? (ଆପଣ ଇଂରାଜୀ କହନ୍ତି କି?)', english: 'Do you speak English?' },
+    { odia: 'Raja (ରାଜା)', english: 'King' },
+    { odia: 'Rani (ରାଣୀ)', english: 'Queen' },
+    { odia: 'Khola (ଖୋଲା)', english: 'Open' },
+    { odia: 'Bond (ବନ୍ଦ)', english: 'Closed' },
+    { odia: 'Prabesha (ପ୍ରବେଶ)', english: 'Entrance' },
+    { odia: 'Prasthana (ପ୍ରସ୍ଥାନ)', english: 'Exit' },
+    { odia: 'Shouchalaya (ଶୌଚାଳୟ)', english: 'Toilet' },
+    { odia: 'Purusha (ପୁରୁଷ)', english: 'Men' },
+    { odia: 'Mahila (ମହିଳା)', english: 'Women' },
+    { odia: 'Nishedh (ନିଷେଧ)', english: 'Forbidden' },
+    { odia: 'Sahajya! (ସାହାଯ୍ୟ!)', english: 'Help!' },
+    { odia: 'Dekha! (ଦେଖା!)', english: 'Look out!' },
+    { odia: 'Pulis (ପୁଲିସ)', english: 'Police' }
 ];
 
 const popularDestinations = [
@@ -241,12 +271,13 @@ function initCultureSection() {
         const card = document.createElement('div');
         card.className = 'art-card';
         card.innerHTML = `
-            <div class="art-image">${item.image_placeholder}</div>
+            <div class="art-image" style="background-image: url('${item.image}'); background-size: cover; background-position: center;"></div>
             <div class="art-info">
                 <h3>${item.name}</h3>
                 <p>${item.description}</p>
                 <p><strong>Origin:</strong> ${item.origin}</p>
                 <p><strong>Specialty:</strong> ${item.specialty}</p>
+                <a href="${item.learn_more_link}" target="_blank" class="btn learn-more-btn">Learn More</a>
             </div>
         `;
         heritageGrid.appendChild(card);
@@ -257,33 +288,276 @@ function initCultureSection() {
         const card = document.createElement('div');
         card.className = 'art-card'; // Reusing the same card style
         card.innerHTML = `
-            <div class="art-image">${dish.image_placeholder}</div>
+            <div class="art-image" style="background-image: url('${dish.image}'); background-size: cover; background-position: center;"></div>
             <div class="art-info">
                 <h3>${dish.name}</h3>
                 <p>${dish.description}</p>
                 <p><strong>Type:</strong> ${dish.type}</p>
                 <p><strong>Key Ingredients:</strong> ${dish.key_ingredients}</p>
+                <a href="${dish.learn_more_link}" target="_blank" class="btn learn-more-btn">Learn More</a>
             </div>
         `;
         foodGrid.appendChild(card);
     });
 }
 
-    function speakWord(word) {
-    if ('speechSynthesis' in window) {
-        const speech = new SpeechSynthesisUtterance(word);
-        speech.lang = 'hi-IN'; // Closest available to Odia
-        speechSynthesis.speak(speech);
-    } else {
+    function speakWord(word, isOdia = true) {
+    if (!('speechSynthesis' in window)) {
         alert('Audio: ' + word);
+        return;
+    }
+
+    // Cancel any ongoing speech
+    speechSynthesis.cancel();
+
+    // Wait for voices to be loaded
+    function speakWithVoice() {
+        const utterance = new SpeechSynthesisUtterance(word);
+        
+        // Get all available voices
+        const voices = speechSynthesis.getVoices();
+        console.log('Available voices:', voices.map(v => `${v.name} (${v.lang})`));
+        
+        // Priority order for voice selection - specifically targeting Indian/female voices
+        const voicePreferences = [
+            // Google voices (usually better quality)
+            voices.find(voice => 
+                voice.name.toLowerCase().includes('google') && 
+                voice.lang.includes('en-IN') &&
+                !voice.name.toLowerCase().includes('male')
+            ),
+            // Indian English voices
+            voices.find(voice => 
+                voice.lang.includes('en-IN') && 
+                !voice.name.toLowerCase().includes('male')
+            ),
+            // Any Indian voice
+            voices.find(voice => voice.lang.includes('en-IN')),
+            // Female voices in general English
+            voices.find(voice => 
+                voice.lang.includes('en') && 
+                (voice.name.toLowerCase().includes('female') || 
+                 voice.name.toLowerCase().includes('woman') ||
+                 voice.name.toLowerCase().includes('zira') ||
+                 voice.name.toLowerCase().includes('susan') ||
+                 voice.name.toLowerCase().includes('samantha'))
+            ),
+            // Google English voices (often sound more natural)
+            voices.find(voice => 
+                voice.name.toLowerCase().includes('google') && 
+                voice.lang.includes('en')
+            ),
+            // Fallback to any English voice that's not explicitly male
+            voices.find(voice => 
+                voice.lang.includes('en') && 
+                !voice.name.toLowerCase().includes('male')
+            )
+        ];
+
+        // Select the first available voice from preferences
+        const selectedVoice = voicePreferences.find(voice => voice) || voices[0];
+        
+        if (selectedVoice) {
+            utterance.voice = selectedVoice;
+            console.log('Selected voice:', selectedVoice.name, selectedVoice.lang);
+        }
+
+        // Optimize settings for Indian English pronunciation
+        utterance.rate = 0.6;        // Very slow for clarity
+        utterance.pitch = 1.4;       // Higher pitch for female voice
+        utterance.volume = 1.0;      // Full volume
+        
+        // Use Indian English if available, otherwise English
+        if (isOdia) {
+            utterance.lang = voices.some(v => v.lang.includes('en-IN')) ? 'en-IN' : 'en-US';
+        } else {
+            utterance.lang = 'en-IN';
+        }
+
+        // Visual feedback
+        const speakBtn = document.getElementById('speak-btn');
+        if (speakBtn) {
+            speakBtn.innerHTML = '🔊 Speaking...';
+            speakBtn.disabled = true;
+            
+            utterance.onstart = function() {
+                console.log('Speech started with voice:', selectedVoice?.name);
+            };
+            
+            utterance.onend = function() {
+                speakBtn.innerHTML = '🔊 Listen';
+                speakBtn.disabled = false;
+                console.log('Speech ended');
+            };
+            
+            utterance.onerror = function(event) {
+                speakBtn.innerHTML = '🔊 Listen';
+                speakBtn.disabled = false;
+                console.error('Speech error:', event.error);
+            };
+        }
+
+        speechSynthesis.speak(utterance);
+    }
+
+    // Ensure voices are loaded before speaking
+    if (speechSynthesis.getVoices().length === 0) {
+        speechSynthesis.addEventListener('voiceschanged', speakWithVoice, { once: true });
+    } else {
+        speakWithVoice();
     }
 }
+
+// Improved pronunciation for Odia words using phonetic approximations
+const odiaPhonetics = {
+    'Namaskar': 'Nah-mas-kaar',
+    'Dhanyabad': 'Dhan-ya-baad', 
+    'Kemiti achanti': 'Kay-mi-ti ah-chan-ti',
+    'Aamba': 'Aam-baa',
+    'Pani': 'Paa-nee',
+    'Ghara': 'Gha-raa',
+    'Bhai': 'Bhaa-ee',
+    'Bhagini': 'Bha-gi-nee'
+};
+
+// Enhanced function to speak with better pronunciation
+function speakOdiaWord(word) {
+    // Clean the word to get just the Odia part
+    const cleanWord = word.split('(')[0].trim();
+    
+    // Use phonetic version if available
+    const phoneticWord = odiaPhonetics[cleanWord] || word;
+    
+    console.log('Speaking:', cleanWord, '→', phoneticWord);
+    speakWord(phoneticWord, true);
+}
+
+// Function to speak current lesson with improved pronunciation
+function speakCurrentLesson() {
+    const phrases = [
+        'Nah-mas-kaar',           // Namaskar - Hello/Goodbye
+        'Dhan-ya-baad',           // Dhanyabad - Thank you  
+        'Kay-mi-ti ah-chan-ti'    // Kemiti achanti - How are you?
+    ];
+    
+    let index = 0;
+    
+    function speakNext() {
+        if (index < phrases.length) {
+            speakWord(phrases[index], true);
+            
+            setTimeout(() => {
+                index++;
+                if (index < phrases.length) {
+                    speakNext();
+                }
+            }, 3000); // 3 second delay for slower pace
+        }
+    }
+    
+    speakNext();
+}
+
+// Enhanced flashcard speech with phonetic pronunciation
+function speakFlashcard() {
+    const flashcardText = document.getElementById('flashcard-text');
+    if (flashcardText) {
+        const text = flashcardText.textContent;
+        
+        // Check if it's Odia (contains Odia script) or English
+        if (text.includes('ଆ') || text.includes('(ଆ')) { // Changed to check for Odia characters
+            // It's Odia - use phonetic pronunciation
+            speakOdiaWord(text);
+        } else {
+            // It's English - speak normally with Indian English
+            speakWord(text, false);
+        }
+    }
+}
+
+// Voice testing function to help user find the best voice
+function testVoices() {
+    const voices = speechSynthesis.getVoices();
+    console.log('\n=== Testing Available Voices ===');
+    
+    // Test Indian English voices specifically
+    const indianVoices = voices.filter(v => v.lang.includes('en-IN'));
+    const femaleVoices = voices.filter(v => 
+        (v.lang.includes('en')) && 
+        (v.name.toLowerCase().includes('female') || 
+         v.name.toLowerCase().includes('woman') ||
+         !v.name.toLowerCase().includes('male'))
+    );
+    
+    console.log('Indian English voices:', indianVoices.map(v => v.name));
+    console.log('Female-like voices:', femaleVoices.map(v => v.name));
+    
+    // Test the selected voice
+    speakWord('Hello, Welcome to Virtual Odisha ', false);
+}
+
+// Initialize voice system with better loading
+function initializeVoiceSystem() {
+    console.log('Initializing voice system...');
+    
+    function onVoicesChanged() {
+        const voices = speechSynthesis.getVoices();
+        console.log(`Loaded ${voices.length} voices`);
+        
+        // Log available Indian/female voices for debugging
+        const indianVoices = voices.filter(v => v.lang.includes('en-IN'));
+        const femaleVoices = voices.filter(v => 
+            v.name.toLowerCase().includes('female') || 
+            v.name.toLowerCase().includes('woman') ||
+            (!v.name.toLowerCase().includes('male') && v.lang.includes('en'))
+        );
+        
+        if (indianVoices.length > 0) {
+            console.log('Indian English voices found:', indianVoices.map(v => v.name));
+        }
+        if (femaleVoices.length > 0) {
+            console.log('Female-like voices found:', femaleVoices.map(v => v.name));
+        }
+        
+        // Test voice availability
+        if (voices.length === 0) {
+            console.warn('No voices available');
+        }
+    }
+
+    // Handle voice loading
+    if (speechSynthesis.getVoices().length === 0) {
+        speechSynthesis.addEventListener('voiceschanged', onVoicesChanged);
+    } else {
+        onVoicesChanged();
+    }
+    
+    // Add a test button for voice debugging (optional)
+    const learnSection = document.getElementById('learn');
+    if (learnSection && !document.getElementById('voice-test-btn')) {
+        const testButton = document.createElement('button');
+        testButton.id = 'voice-test-btn';
+        testButton.className = 'btn';
+        testButton.innerHTML = '🎤 Test Voice';
+        testButton.style.cssText = 'margin-left: 10px; font-size: 0.9rem; padding: 8px 16px;';
+        testButton.onclick = testVoices;
+        
+        const speakBtn = document.getElementById('speak-btn');
+        if (speakBtn && speakBtn.parentNode) {
+            speakBtn.parentNode.insertBefore(testButton, speakBtn.nextSibling);
+        }
+    }
+}
+
 
 function flipCard() {
     const cardText = document.getElementById('flashcard-text');
     const currentCard = vocabulary[currentCardIndex];
     isCardFlipped = !isCardFlipped;
     cardText.textContent = isCardFlipped ? currentCard.english : currentCard.odia;
+    
+    // Add this line for audio:
+    setTimeout(() => speakFlashcard(), 300);
 }
 
 function nextCard() {
@@ -291,6 +565,9 @@ function nextCard() {
     const cardText = document.getElementById('flashcard-text');
     cardText.textContent = vocabulary[currentCardIndex].odia;
     isCardFlipped = false;
+    
+    // Add this line for audio:
+    setTimeout(() => speakFlashcard(), 300);
 }
 
 // --- Quick Quiz Functions ---
@@ -444,28 +721,72 @@ async function updateWeather() {
 }
 
 // --- Safety Hub Functions ---
-function showDistrictInfo(districtName) {
-    const districtInfoData = {
-        khordha: '<strong>Emergency Center:</strong> Bhubaneswar<br><strong>Contact:</strong> 0674-2345678<br><strong>Evacuation Centers:</strong> 15 locations<br><strong>Nearest Hospital:</strong> AIIMS Bhubaneswar',
-        cuttack: '<strong>Emergency Center:</strong> Cuttack<br><strong>Contact:</strong> 0671-2234567<br><strong>Evacuation Centers:</strong> 12 locations<br><strong>Nearest Hospital:</strong> SCB Medical College',
-        puri: '<strong>Emergency Center:</strong> Puri<br><strong>Contact:</strong> 06752-223456<br><strong>Evacuation Centers:</strong> 8 locations<br><strong>Nearest Hospital:</strong> District Headquarters Hospital',
-        ganjam: '<strong>Emergency Center:</strong> Berhampur<br><strong>Contact:</strong> 0680-2234567<br><strong>Evacuation Centers:</strong> 20 locations<br><strong>Nearest Hospital:</strong> MKCG Medical College'
-    };
+const districtInfoData = {
+    angul: '<strong>Emergency Center:</strong> Angul<br><strong>Contact:</strong> 06764-230245<br><strong>Nearest Hospital:</strong> District HQ Hospital, Angul',
+    balangir: '<strong>Emergency Center:</strong> Balangir<br><strong>Contact:</strong> 06652-232245<br><strong>Nearest Hospital:</strong> Bhima Bhoi Medical College & Hospital',
+    balasore: '<strong>Emergency Center:</strong> Balasore<br><strong>Contact:</strong> 06782-262067<br><strong>Nearest Hospital:</strong> Fakir Mohan Medical College and Hospital',
+    bargarh: '<strong>Emergency Center:</strong> Bargarh<br><strong>Contact:</strong> 06646-234044<br><strong>Nearest Hospital:</strong> District HQ Hospital, Bargarh',
+    bhadrak: '<strong>Emergency Center:</strong> Bhadrak<br><strong>Contact:</strong> 06784-251544<br><strong>Nearest Hospital:</strong> District HQ Hospital, Bhadrak',
+    boudh: '<strong>Emergency Center:</strong> Boudh<br><strong>Contact:</strong> 06841-222245<br><strong>Nearest Hospital:</strong> District HQ Hospital, Boudh',
+    cuttack: '<strong>Emergency Center:</strong> Cuttack<br><strong>Contact:</strong> 0671-2304589<br><strong>Nearest Hospital:</strong> SCB Medical College',
+    deogarh: '<strong>Emergency Center:</strong> Deogarh<br><strong>Contact:</strong> 06643-226245<br><strong>Nearest Hospital:</strong> District HQ Hospital, Deogarh',
+    dhenkanal: '<strong>Emergency Center:</strong> Dhenkanal<br><strong>Contact:</strong> 06762-226545<br><strong>Nearest Hospital:</strong> District HQ Hospital, Dhenkanal',
+    gajapati: '<strong>Emergency Center:</strong> Paralakhemundi<br><strong>Contact:</strong> 06815-222245<br><strong>Nearest Hospital:</strong> District HQ Hospital, Gajapati',
+    ganjam: '<strong>Emergency Center:</strong> Chatrapur<br><strong>Contact:</strong> 06811-263845<br><strong>Nearest Hospital:</strong> MKCG Medical College, Berhampur',
+    jagatsinghpur: '<strong>Emergency Center:</strong> Jagatsinghpur<br><strong>Contact:</strong> 06724-220045<br><strong>Nearest Hospital:</strong> District HQ Hospital, Jagatsinghpur',
+    jajpur: '<strong>Emergency Center:</strong> Jajpur<br><strong>Contact:</strong> 06728-222045<br><strong>Nearest Hospital:</strong> District HQ Hospital, Jajpur',
+    jharsuguda: '<strong>Emergency Center:</strong> Jharsuguda<br><strong>Contact:</strong> 06645-272245<br><strong>Nearest Hospital:</strong> District HQ Hospital, Jharsuguda',
+    kalahandi: '<strong>Emergency Center:</strong> Bhawanipatna<br><strong>Contact:</strong> 06670-230245<br><strong>Nearest Hospital:</strong> Saheed Rendo Majhi Medical College & Hospital',
+    kandhamal: '<strong>Emergency Center:</strong> Phulbani<br><strong>Contact:</strong> 06842-253645<br><strong>Nearest Hospital:</strong> District HQ Hospital, Kandhamal',
+    kendrapara: '<strong>Emergency Center:</strong> Kendrapara<br><strong>Contact:</strong> 06727-232245<br><strong>Nearest Hospital:</strong> District HQ Hospital, Kendrapara',
+    keonjhar: '<strong>Emergency Center:</strong> Keonjhar<br><strong>Contact:</strong> 06766-255445<br><strong>Nearest Hospital:</strong> Dharanidhar Medical College & Hospital',
+    khordha: '<strong>Emergency Center:</strong> Khordha<br><strong>Contact:</strong> 06755-220445<br><strong>Nearest Hospital:</strong> AIIMS Bhubaneswar',
+    koraput: '<strong>Emergency Center:</strong> Koraput<br><strong>Contact:</strong> 06852-250245<br><strong>Nearest Hospital:</strong> SLN Medical College & Hospital',
+    malkangiri: '<strong>Emergency Center:</strong> Malkangiri<br><strong>Contact:</strong> 06861-230245<br><strong>Nearest Hospital:</strong> District HQ Hospital, Malkangiri',
+    mayurbhanj: '<strong>Emergency Center:</strong> Baripada<br><strong>Contact:</strong> 06792-252245<br><strong>Nearest Hospital:</strong> Pandit Raghunath Murmu Medical College & Hospital',
+    nabarangpur: '<strong>Emergency Center:</strong> Nabarangpur<br><strong>Contact:</strong> 06858-222245<br><strong>Nearest Hospital:</strong> District HQ Hospital, Nabarangpur',
+    nayagarh: '<strong>Emergency Center:</strong> Nayagarh<br><strong>Contact:</strong> 06753-252245<br><strong>Nearest Hospital:</strong> District HQ Hospital, Nayagarh',
+    nuapada: '<strong>Emergency Center:</strong> Nuapada<br><strong>Contact:</strong> 06678-225245<br><strong>Nearest Hospital:</strong> District HQ Hospital, Nuapada',
+    puri: '<strong>Emergency Center:</strong> Puri<br><strong>Contact:</strong> 06752-223456<br><strong>Nearest Hospital:</strong> District Headquarters Hospital, Puri',
+    rayagada: '<strong>Emergency Center:</strong> Rayagada<br><strong>Contact:</strong> 06856-222245<br><strong>Nearest Hospital:</strong> District HQ Hospital, Rayagada',
+    sambalpur: '<strong>Emergency Center:</strong> Sambalpur<br><strong>Contact:</strong> 0663-2404045<br><strong>Nearest Hospital:</strong> VIMSAR, Burla',
+    subarnapur: '<strong>Emergency Center:</strong> Sonepur<br><strong>Contact:</strong> 06654-220245<br><strong>Nearest Hospital:</strong> District HQ Hospital, Subarnapur',
+    sundargarh: '<strong>Emergency Center:</strong> Sundargarh<br><strong>Contact:</strong> 06622-272245<br><strong>Nearest Hospital:</strong> Govt. Medical College & Hospital, Sundargarh'
+};
 
+function showDistrictInfo(districtName) {
     const infoDiv = document.getElementById('district-info');
     if (districtName && districtInfoData[districtName]) {
         infoDiv.innerHTML = districtInfoData[districtName];
-        infoDiv.style.display = 'block';
     } else {
-        infoDiv.innerHTML = '';
-        infoDiv.style.display = 'none';
+        infoDiv.innerHTML = '<p>Select a district to see emergency contact information.</p>';
     }
 }
 
 function saveChecklist() {
+    const checklistState = {};
     const checkboxes = document.querySelectorAll('#checklist input[type="checkbox"]');
-    const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
-    alert(`Progress saved! You have completed ${checkedCount} out of ${checkboxes.length} safety preparations.`);
+    checkboxes.forEach(checkbox => {
+        checklistState[checkbox.dataset.task] = checkbox.checked;
+    });
+    localStorage.setItem('cycloneChecklist', JSON.stringify(checklistState));
+    
+    const status = document.getElementById('checklist-saved-status');
+    status.textContent = 'Saved!';
+    setTimeout(() => { status.textContent = ''; }, 2000);
+}
+
+function loadChecklist() {
+    const savedState = localStorage.getItem('cycloneChecklist');
+    if (savedState) {
+        const checklistState = JSON.parse(savedState);
+        const checkboxes = document.querySelectorAll('#checklist input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            if (checklistState[checkbox.dataset.task]) {
+                checkbox.checked = true;
+            }
+        });
+    }
 }
 
 function updateProgress(percentage) {
@@ -659,6 +980,7 @@ document.addEventListener('DOMContentLoaded', function () {
     createPageReveal();
     initTourGuide();
     initCultureSection();
+    loadChecklist();
 
     // --- Event Listeners Setup ---
 
@@ -694,9 +1016,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Home CTA (if it exists)
-    const ctaButton = document.querySelector('.cta-button');
-    if (ctaButton) ctaButton.addEventListener('click', () => showSection('tour'));
+    // Home page hero buttons
+    document.querySelectorAll('.hero-cta-buttons a').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const sectionName = e.target.dataset.section;
+            if (sectionName) {
+                showSection(sectionName);
+            }
+        });
+    });
 
 
     // Tour Guide Search and View More
@@ -738,7 +1067,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('gallery-modal-close').addEventListener('click', closeGalleryModal);
 
     // Learn Odia Section
-    document.getElementById('speak-btn').addEventListener('click', () => speakWord('namaskar'));
+    document.getElementById('speak-btn').addEventListener('click', () => speakCurrentLesson());
     document.getElementById('flip-card-btn').addEventListener('click', flipCard);
     document.getElementById('next-card-btn').addEventListener('click', nextCard);
 

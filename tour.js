@@ -89,7 +89,6 @@ const touristLocations = [
             'images/Temples/Lingaraja Temple/Lingaraj-Temple-Bhubaneswar-Orissa.webp',
             'images/Temples/Lingaraja Temple/Lingaraj-Temple-min.jpg',
             'images/Temples/Lingaraja Temple/lingaraj.jpg',
-            'images/Temples/Lingaraja Temple/lingaraja-temple-bhubaneswar-tourism-entry-fee-timings-holidays-reviews-header.jpg',
             'images/Temples/Lingaraja Temple/wp9350422.jpg'
         ],
         short_desc: 'An ancient, magnificent temple dedicated to Lord Shiva, dominating the Bhubaneswar skyline.',
@@ -127,7 +126,14 @@ const touristLocations = [
         id: 'dhauli_shanti_stupa',
         name: 'Dhauli Shanti Stupa',
         coords: { lat: 20.1919, lng: 85.8397 },
-        images: ['images/dhauli-shanti-stupa.jpg'],
+        images: [
+            'images/Hill Stations & Waterfalls/Dhauli Shanti Stupa/Dhauli-Giri-Shanti-Stupa-Bhubaneswar-Orissa.jpg',
+            'images/Hill Stations & Waterfalls/Dhauli Shanti Stupa/dhauli-shanti-stupa_slider-2.webp',
+            'images/Hill Stations & Waterfalls/Dhauli Shanti Stupa/Dhauli-Shanti-Stupa-1024x576.jpg',
+            'images/Hill Stations & Waterfalls/Dhauli Shanti Stupa/Dhauligiri_Shanti_Stupa_jgonu9.webp',
+            'images/Hill Stations & Waterfalls/Dhauli Shanti Stupa/dhauligiri-shanti-stupa-unit-3-bhubaneshwar-tourist-attraction-3wd1p6sxes.avif',
+            'images/Hill Stations & Waterfalls/Dhauli Shanti Stupa/Shanti_stupa.(Dhauli).jpg'
+        ],
         short_desc: 'A white peace pagoda on the site of the historic Kalinga War, symbolizing peace and non-violence.',
         details: {
             history: 'Built in the 1970s by the Japan Buddha Sangha and the Kalinga Nippon Buddha Sangha.',
@@ -141,7 +147,18 @@ const touristLocations = [
         id: 'bhitarkanika_national_park',
         name: 'Bhitarkanika National Park',
         coords: { lat: 20.7369, lng: 86.8958 },
-        images: ['images/bhitarkanika-national-park.jpg'],
+        images: [
+            'images/Wildlife & Nature/Bhitarkanika National Park/2.jpg',
+            'images/Wildlife & Nature/Bhitarkanika National Park/9oribhitar_4C.jpg',
+            'images/Wildlife & Nature/Bhitarkanika National Park/bhitarkanika_national_park_facts.jpg',
+            'images/Wildlife & Nature/Bhitarkanika National Park/Bhitarkanika-closed-for-three-months.jpg',
+            'images/Wildlife & Nature/Bhitarkanika National Park/Bhitarkanika-national-Park-Rajnagar-Kendrapara.webp',
+            'images/Wildlife & Nature/Bhitarkanika National Park/cuttack-odisha-bhitarkanika-national-park-cuttack-orissa-1-attr-hero.jpg',
+            'images/Wildlife & Nature/Bhitarkanika National Park/images (1).jpg',
+            'images/Wildlife & Nature/Bhitarkanika National Park/images (2).jpg',
+            'images/Wildlife & Nature/Bhitarkanika National Park/images.jpg',
+            'images/Wildlife & Nature/Bhitarkanika National Park/IMG20250126120834.jpg'
+        ],
         short_desc: 'A vibrant mangrove ecosystem, home to saltwater crocodiles and a rich diversity of flora and fauna.',
         details: {
             history: 'The area was the hunting grounds of the erstwhile King of Kanika. It was designated a national park in 1988.',
@@ -155,7 +172,16 @@ const touristLocations = [
         id: 'simlipal_national_park',
         name: 'Simlipal National Park',
         coords: { lat: 21.9333, lng: 86.3833 },
-        images: ['images/simlipal-national-park.jpg'],
+        images: [
+            'images/Wildlife & Nature/Simlipal National Park/devkund.jpg',
+            'images/Wildlife & Nature/Simlipal National Park/gate1.jpg',
+            'images/Wildlife & Nature/Simlipal National Park/images (1).jpg',
+            'images/Wildlife & Nature/Simlipal National Park/images (2).jpg',
+            'images/Wildlife & Nature/Simlipal National Park/images (3).jpg',
+            'images/Wildlife & Nature/Simlipal National Park/images.jpg',
+            'images/Wildlife & Nature/Simlipal National Park/nice-fall-need-to-walk.jpg',
+            'images/Wildlife & Nature/Simlipal National Park/Simlipal_tiger_reserve.jpg'
+        ],
         short_desc: 'A vast tiger reserve and national park with dense forests, rolling hills, and spectacular waterfalls.',
         details: {
             history: 'Formerly the hunting ground for the Maharajas of Mayurbhanj, it was declared a tiger reserve in 1973.',
@@ -169,7 +195,15 @@ const touristLocations = [
         id: 'raghurajpur_heritage_village',
         name: 'Raghurajpur Heritage Village',
         coords: { lat: 19.8910, lng: 85.8300 },
-        images: ['images/raghurajpur-heritage-village.jpg'],
+        images: [
+            'images/Hill Stations & Waterfalls/Raghurajpur Heritage Village/images (1).jpg',
+            'images/Hill Stations & Waterfalls/Raghurajpur Heritage Village/images.jpg',
+            'images/Hill Stations & Waterfalls/Raghurajpur Heritage Village/ksp_8730.jpg',
+            'images/Hill Stations & Waterfalls/Raghurajpur Heritage Village/ksp_8739.jpg',
+            'images/Hill Stations & Waterfalls/Raghurajpur Heritage Village/Raghurajpur-village.jpg',
+            'images/Hill Stations & Waterfalls/Raghurajpur Heritage Village/Thumb20190429_162141.jpeg',
+            'images/Hill Stations & Waterfalls/Raghurajpur Heritage Village/Thumb20190429_162354.jpeg'
+        ],
         short_desc: "A living museum where every house is an artist's studio, famous for Pattachitra paintings.",
         details: {
             history: 'This village has a long lineage of artists who have practiced traditional art forms for generations.',
@@ -183,7 +217,15 @@ const touristLocations = [
         id: 'pipili_applique_work',
         name: 'Pipili Applique Work',
         coords: { lat: 20.1200, lng: 85.8300 },
-        images: ['images/pipili-applique-work.jpg'],
+        images: [
+            'images/Heritage & Art/Pipili Applique (Chandua)/images (1).jpg',
+            'images/Heritage & Art/Pipili Applique (Chandua)/images (2).jpg',
+            'images/Heritage & Art/Pipili Applique (Chandua)/images (3).jpg',
+            'images/Heritage & Art/Pipili Applique (Chandua)/images (4).jpg',
+            'images/Heritage & Art/Pipili Applique (Chandua)/images (5).jpg',
+            'images/Heritage & Art/Pipili Applique (Chandua)/images (6).jpg',
+            'images/Heritage & Art/Pipili Applique (Chandua)/images.jpg'
+        ],
         short_desc: 'A vibrant town famous for its colorful and intricate applique craft, known as "Chandua".',
         details: {
             history: "The craft originated as a temple art, used to create canopies and umbrellas for the Jagannath Temple's Rath Yatra.",
@@ -197,7 +239,17 @@ const touristLocations = [
         id: 'gopalpur_on_sea',
         name: 'Gopalpur-on-Sea',
         coords: { lat: 19.2641, lng: 84.8983 },
-        images: ['images/gopalpur-on-sea.jpg'],
+        images: [
+            'images/Beaches & Lakes/Gopalpur Beach/1d35a8d67abc7fdab6d3dbbc94f2fc5e_1000x1000.jpg',
+            'images/Beaches & Lakes/Gopalpur Beach/20220816_092701.webp',
+            'images/Beaches & Lakes/Gopalpur Beach/fd01f-dsc_03504568288753288084190.webp',
+            'images/Beaches & Lakes/Gopalpur Beach/gopalpur-beach-1-1024x577.jpeg',
+            'images/Beaches & Lakes/Gopalpur Beach/gopalpur-beach-768x512.jpg',
+            'images/Beaches & Lakes/Gopalpur Beach/Gopalpur-Beach-FEst-e1670078631614.jpg',
+            'images/Beaches & Lakes/Gopalpur Beach/images (1).jpg',
+            'images/Beaches & Lakes/Gopalpur Beach/images.jpg',
+            'images/Beaches & Lakes/Gopalpur Beach/img20250115150952.webp'
+        ],
         short_desc: 'A tranquil beach town with a historic lighthouse and remnants of a colonial-era seaport.',
         details: {
             history: 'It was a bustling seaport during the British Raj, with trade connections to Burma. The old jetty and buildings reflect its past.',
@@ -211,7 +263,17 @@ const touristLocations = [
         id: 'ratnagiri_buddhist_site',
         name: 'Ratnagiri Buddhist Site',
         coords: { lat: 20.6444, lng: 86.3358 },
-        images: ['images/ratnagiri-buddhist-site.jpg'],
+        images: [
+            'images/Temples/Ratnagiri Buddhist Site/img2.webp',
+            'images/Temples/Ratnagiri Buddhist Site/img3.jpg',
+            'images/Temples/Ratnagiri Buddhist Site/img4.JPG',
+            'images/Temples/Ratnagiri Buddhist Site/img5.jpg',
+            'images/Temples/Ratnagiri Buddhist Site/img6.jpeg',
+            'images/Temples/Ratnagiri Buddhist Site/img7.jpeg',
+            'images/Temples/Ratnagiri Buddhist Site/img8.jpg',
+            'images/Temples/Ratnagiri Buddhist Site/img9.jpeg',
+            'images/Temples/Ratnagiri Buddhist Site/ksp_7399.jpg'
+        ],
         short_desc: 'An excavated Buddhist monastery complex, part of the "Diamond Triangle" of Buddhist sites.',
         details: {
             history: 'Flourished from the 5th to the 13th century as a major center for Mahayana and later Vajrayana Buddhism.',
@@ -403,5 +465,121 @@ const touristLocations = [
             heritage: 'Built in the traditional Kalinga architectural style.'
         },
         wiki_link: 'https://en.wikipedia.org/wiki/Taratarini_Temple'
+    }
+,
+    {
+        id: 'chandrabhaga_beach',
+        name: 'Chandrabhaga Beach',
+        coords: { lat: 19.8633, lng: 86.1035 },
+        images: [
+            'images/Beaches & Lakes/Chandrabhaga Beach/bicycle-chandrabhaga.jpeg',
+            'images/Beaches & Lakes/Chandrabhaga Beach/Chandrabhaga_beach.jpg',
+            'images/Beaches & Lakes/Chandrabhaga Beach/chandrabhaga-beach-konark.jpg',
+            'images/Beaches & Lakes/Chandrabhaga Beach/images (1).jpg',
+            'images/Beaches & Lakes/Chandrabhaga Beach/images (2).jpg',
+            'images/Beaches & Lakes/Chandrabhaga Beach/images.jpg',
+            'images/Beaches & Lakes/Chandrabhaga Beach/sand-art-festival-52.jpg'
+        ],
+        short_desc: 'A beautiful beach known for its serene environment and proximity to the Konark Sun Temple.',
+        details: {
+            history: 'The beach holds significant cultural and mythological importance in Odisha.',
+            importance: 'It is a popular spot for the annual Chandrabhaga Mela, a seven-day fair in honor of the Sun God.',
+            nature: 'Known for its clean sands and calm waters, offering a peaceful retreat.',
+            heritage: 'The beach is associated with many legends and is considered a sacred place.'
+        },
+        wiki_link: 'https://en.wikipedia.org/wiki/Chandrabhaga_Beach'
+    },
+    {
+        id: 'puri_golden_beach',
+        name: 'Puri Golden Beach',
+        coords: { lat: 19.8073, lng: 85.8315 },
+        images: [
+            'images/Beaches & Lakes/Puri Golden Beach/252018263_10227603811107351_1075817064327685400_n.webp',
+            'images/Beaches & Lakes/Puri Golden Beach/EgaRWVpVoAAMU_V.jpg',
+            'images/Beaches & Lakes/Puri Golden Beach/Front-Sea-Facing-Room-8.jpg',
+            'images/Beaches & Lakes/Puri Golden Beach/golden-beach-puri-8879.jpg',
+            'images/Beaches & Lakes/Puri Golden Beach/Header-2-2-1024x391.jpg',
+            'images/Beaches & Lakes/Puri Golden Beach/images (1).jpg',
+            'images/Beaches & Lakes/Puri Golden Beach/images (2).jpg',
+            'images/Beaches & Lakes/Puri Golden Beach/images (3).jpg',
+            'images/Beaches & Lakes/Puri Golden Beach/images.jpg',
+            'images/Beaches & Lakes/Puri Golden Beach/puri-golden-beach-ticket.jpg'
+        ],
+        short_desc: 'A famous beach in Puri, known for its golden sands and spiritual significance.',
+        details: {
+            history: 'The beach has been a popular destination for pilgrims and tourists for centuries.',
+            importance: 'It is one of the few beaches in India to have received the Blue Flag certification for its cleanliness and environment-friendly practices.',
+            nature: 'The beach offers stunning views of the Bay of Bengal and is a great place to witness sunrise and sunset.',
+            heritage: 'The beach is an integral part of the cultural and religious life of Puri.'
+        },
+        wiki_link: 'https://en.wikipedia.org/wiki/Puri_Beach'
+    },
+    {
+        id: 'daringbadi_kashmir_of_odisha',
+        name: 'Daringbadi - Kashmir of Odisha',
+        coords: { lat: 20.25, lng: 84.25 },
+        images: [
+            'images/Hill Stations & Waterfalls/Daringbadi-Kashmir of Odisha/bannerimg_25.jpeg',
+            'images/Hill Stations & Waterfalls/Daringbadi-Kashmir of Odisha/DARINGBADI-1024x574.jpg',
+            'images/Hill Stations & Waterfalls/Daringbadi-Kashmir of Odisha/daringbadi-kashmir-of-odisha-you-must-visit.jpg',
+            'images/Hill Stations & Waterfalls/Daringbadi-Kashmir of Odisha/images.jpg',
+            'images/Hill Stations & Waterfalls/Daringbadi-Kashmir of Odisha/magnet-valley-view-from.jpg',
+            'images/Hill Stations & Waterfalls/Daringbadi-Kashmir of Odisha/STB3.jpg'
+        ],
+        short_desc: 'A hill station in Odisha, popularly known as the "Kashmir of Odisha".',
+        details: {
+            history: 'The place has been a popular summer retreat for the local people for many years.',
+            importance: 'It is the only place in Odisha that receives snowfall during winter.',
+            nature: 'Surrounded by pine forests, coffee gardens, and beautiful valleys.',
+            heritage: 'The region is home to several indigenous tribes, offering a glimpse into their unique culture and traditions.'
+        },
+        wiki_link: 'https://en.wikipedia.org/wiki/Daringbadi'
+    },
+    {
+        id: 'nandankanan_zoological_park',
+        name: 'Nandankanan Zoological Park',
+        coords: { lat: 20.397, lng: 85.824 },
+        images: [
+            'images/Wildlife & Nature/Nandankanan Zoological Park/8aabb86d651d49096c91528ac256eaee_1000x1000.jpg',
+            'images/Wildlife & Nature/Nandankanan Zoological Park/bear-safari-slide.jpg',
+            'images/Wildlife & Nature/Nandankanan Zoological Park/botanical.jpg',
+            'images/Wildlife & Nature/Nandankanan Zoological Park/images.jpg',
+            'images/Wildlife & Nature/Nandankanan Zoological Park/nandankanan_zoological_park_photos_3967.jpg',
+            'images/Wildlife & Nature/Nandankanan Zoological Park/nandankanan-bhubaneshwar-odisha-2-attr-hero.jpg',
+            'images/Wildlife & Nature/Nandankanan Zoological Park/nandankanan-bhubaneshwar-odisha-2-musthead-hero.jpg',
+            'images/Wildlife & Nature/Nandankanan Zoological Park/nandankanan-zoo-lion-safary-we-spotted-lions.jpg',
+            'images/Wildlife & Nature/Nandankanan Zoological Park/nandankanan-zoological-park-bhubaneswar-india-tourism-history.jpg'
+        ],
+        short_desc: 'A premier large zoo and botanical garden in Bhubaneswar, Odisha.',
+        details: {
+            history: 'Established in 1960, it was opened to the public in 1979.',
+            importance: 'It is the first zoo in India to become a member of the World Association of Zoos and Aquariums (WAZA).',
+            nature: 'The zoo is located in a natural forest and includes the Kanjia Lake, a wetland of national importance.',
+            heritage: 'It is famous for its white tigers and has a successful breeding program for several endangered species.'
+        },
+        wiki_link: 'https://en.wikipedia.org/wiki/Nandankanan_Zoological_Park'
+    },
+    {
+        id: 'satkosia_gorge_tiger_reserve',
+        name: 'Satkosia Gorge & Tiger Reserve',
+        coords: { lat: 20.53, lng: 84.78 },
+        images: [
+            'images/Wildlife & Nature/Satkosia Gorge & Tiger Reserve/images (1).jpg',
+            'images/Wildlife & Nature/Satkosia Gorge & Tiger Reserve/images.jpg',
+            'images/Wildlife & Nature/Satkosia Gorge & Tiger Reserve/satkosia-gorge-wildlife-sanctuary-bhubaneshwar-odisha-1-attr-hero.jpg',
+            'images/Wildlife & Nature/Satkosia Gorge & Tiger Reserve/satkosia-gorge-wildlife-sanctuary-bhubaneshwar-odisha-2-attr-hero.jpg',
+            'images/Wildlife & Nature/Satkosia Gorge & Tiger Reserve/satkosia-gorge-wildlife-sanctuary-bhubaneshwar-odisha-3-attr-hero.jpg',
+            'images/Wildlife & Nature/Satkosia Gorge & Tiger Reserve/satkosia-gorge-wildlife-sanctuary-bhubaneshwar-odisha-attr-about.jpg',
+            'images/Wildlife & Nature/Satkosia Gorge & Tiger Reserve/satkosia-tiger-reserve-bhubaneswar-tourism-entry-fee-timings-holidays-reviews-header.jpg',
+            'images/Wildlife & Nature/Satkosia Gorge & Tiger Reserve/Satkosia-Tiger-Reserve.jpg'
+        ],
+        short_desc: 'A tiger reserve located in the Angul district of Odisha, comprising two adjoining wildlife sanctuaries.',
+        details: {
+            history: 'The Satkosia Gorge Wildlife Sanctuary was established in 1976, and the Baisipalli Wildlife Sanctuary in 1981. The two were combined to form the Satkosia Tiger Reserve in 2007.',
+            importance: 'It is a critical tiger habitat and plays a significant role in the conservation of tigers in the state.',
+            nature: 'The reserve is known for its scenic beauty, with the Mahanadi River flowing through a 22 km long gorge.',
+            heritage: 'The area is rich in biodiversity and is home to a variety of flora and fauna.'
+        },
+        wiki_link: 'https://en.wikipedia.org/wiki/Satkosia_Tiger_Reserve'
     }
 ];

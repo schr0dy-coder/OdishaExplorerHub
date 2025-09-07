@@ -160,3 +160,166 @@ select {
     padding: 1rem;
     margin-top: 1rem;
 }
+/* Redesigned Safety Cards */
+.safety-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.safety-card {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(135, 169, 107, 0.18);
+    padding: 2rem 1.5rem;
+    min-width: 320px;
+    max-width: 370px;
+    flex: 1 1 320px;
+    transition: transform 0.2s;
+    position: relative;
+}
+
+.safety-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 16px 40px 0 rgba(31, 38, 135, 0.18);
+}
+
+.safety-card h3 {
+    font-size: 1.35rem;
+    color: var(--forest-green);
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.5px;
+    text-align: left;
+}
+
+.emergency-contacts-card .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    background: rgba(135, 169, 107, 0.08);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    gap: 1rem;
+    box-shadow: 0 2px 8px rgba(135, 169, 107, 0.07);
+    transition: background 0.2s;
+}
+
+.contact-item:hover {
+    background: rgba(135, 169, 107, 0.18);
+}
+
+.contact-icon {
+    font-size: 2.1rem;
+    background: var(--sage-green);
+    color: white;
+    border-radius: 50%;
+    width: 2.7rem;
+    height: 2.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(135, 169, 107, 0.15);
+}
+
+.contact-info span {
+    font-size: 1rem;
+    color: var(--forest-green);
+    font-weight: 500;
+}
+
+.contact-info strong {
+    font-size: 1.15rem;
+    color: var(--text-dark);
+    margin-left: 0.3rem;
+}
+
+#checklist {
+    background: rgba(135, 169, 107, 0.08);
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(135, 169, 107, 0.07);
+    padding: 1.2rem;
+}
+
+#checklist label {
+    display: flex;
+    align-items: center;
+    padding: 0.7rem 0;
+    color: var(--text-dark);
+    border-bottom: 1px solid rgba(135, 169, 107, 0.12);
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+#checklist label:last-child {
+    border-bottom: none;
+}
+
+#checklist label:hover {
+    background: rgba(135, 169, 107, 0.16);
+    border-radius: 7px;
+}
+
+#checklist input[type="checkbox"] {
+    margin-right: 0.8rem;
+    accent-color: var(--sage-green);
+    transform: scale(1.15);
+}
+
+.checklist-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.2rem;
+}
+
+#save-checklist-btn {
+    background: var(--sage-green);
+    color: white;
+    border-radius: 8px;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#save-checklist-btn:hover {
+    background: var(--forest-green);
+}
+
+#checklist-saved-status {
+    font-size: 0.95rem;
+    color: var(--forest-green);
+    margin-left: 1rem;
+}
+
+#district-selector {
+    margin-bottom: 1rem;
+    background: rgba(135, 169, 107, 0.08);
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(135, 169, 107, 0.07);
+    padding: 0.8rem;
+    font-size: 1rem;
+    color: var(--forest-green);
+}
+
+#district-info {
+    background: rgba(135, 169, 107, 0.08);
+    border-radius: 10px;
+    padding: 1rem;
+    font-size: 1rem;
+    color: var(--text-dark);
+    box-shadow: 0 2px 8px rgba(135, 169, 107, 0.07);
+    margin-top: 0.5rem;
+}
